@@ -49,6 +49,7 @@ Para fazer:
 - [x] Suporte do KernelSU
 - [ ] Adicionar suporte para dispositivo GKI (Sobre do KernelSU)
 - [x] Adicionar suporte a fazer signed builds (ainda sendo feito)
+- [x] Adicionar novo metodo de traduçoes(Ainda sendo feito)
 
 [Lincença](LINCENSE)
 

@@ -45,6 +45,7 @@ To do:
 - [x] Add suport to KernelSU
 - [ ] Add suport to KernelSU GKI
 - [x] Add a way to build signed builds (Still beign fixed)
+- [x] Add a new way for translations (Still being worked on)
 
 [Lincense](LINCENSE)
 
