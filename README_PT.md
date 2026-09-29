@@ -35,6 +35,7 @@ Nota:Nas distros baseadas de Ubuntu 24,vê se ê x64 e baseado no mais recente,m
 8 cores 
 # Aviso!
 Nao execute em uma pasta diferente que a pasta que voce clonou
+#
 
 Eu criei em inglês e português 
 
