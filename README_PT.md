@@ -33,8 +33,8 @@ Nota:Nas distros baseadas de Ubuntu 24,vê se ê x64 e baseado no mais recente,m
 16GB de RAM
 
 8 cores 
-#
-Por favor,nao rode o "lineageos23pt.sh" usando bash,porque pode dar erros numa parte do script,entao rode "./lineageos23pt.sh ou rode com o menu.sh"
+# Aviso!
+Nao execute em uma pasta diferente que a pasta que voce clonou
 
 Eu criei em inglês e português 
 

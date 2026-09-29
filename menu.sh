@@ -45,17 +45,14 @@ read -rp "(S/N)" KERNELSU
 
     if [[ $KERNELSU =~ ^[Ss]$ ]]; then
         echo "Tabom"
-        chmod +x lineageos23pt.sh
-        USE_KERNELSU=true ./lineageos23pt.sh
-        echo "Bem vindo ao meu lineageos 23 builder"
-        USE_KERNELSU=false ./lineageos23pt.sh
-        echo "Agora voce tem um build do lineageos 23"
+        chmod +x * tools/*
+        export USE_KERNELSU=true
+        exec build.sh
         exit 0
     else
-        echo "Bem vindo ao meu lineageos 23 builder"
-        chmod +x $(pwd)/lineageos23pt.sh
-        USE_KERNELSU=false ./lineageos23pt.sh
-        echo "Agora voce tem um build do lineageos 23"
+        chmod +x * tools/*
+        export USE_KERNELSU=false
+        exec tools/pt_BR.sh
         exit 0
     fi
 
@@ -66,14 +63,14 @@ echo "But it is for NO GKI"
 read -rp "(Y/N)" KERNELSU
     if [[ $KERNELSU =~ ^[Yy]$ ]]; then
         echo "Okay"
-        chmod +x lineageos23en.sh
-        echo "Welcome to my lineageos 23 builder"
-        USE_KERNELSU=true ./lineageos23pt.sh
-        
+        chmod +x * tools/*
+        export USE_KERNELSU=true
+        exec build.sh
     else
-        chmod +x lineageos23en.sh
-        export USE_KERNELSU=false ./lineageos23pt.sh
-        echo "Now you have a build of lineageos 23"
+        echo "Okay"
+        chmod +x * tools/*
+        export USE_KERNELSU=true
+        exec build.sh
 else 
 echo "Nao entendi meu fi."
 echo "I dont understand"

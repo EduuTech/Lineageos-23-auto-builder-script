@@ -31,9 +31,12 @@ Note:not all OSes are supported,Please see if your OS of choice is x64 and based
 8 cores. 
 
 1TB SSD (If you want,use HDD,but its slower to compile)
-#
 
-Plese do not run the other scripts with bash,it will give erros
+# Warnig
+Please,understand that you cant compile through Windows or mac
+And Please,dont execute it on a diferent path that you are
+
+Please do not run the other scripts with bash,it will give erros
 
 Theres English and portuguese
 
