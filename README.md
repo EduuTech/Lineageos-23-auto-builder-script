@@ -16,10 +16,9 @@ This script installs the required tools and dependencies to build LineageOS 23.
 How to download the script
 
 ```bash
-git clone https://github.com/Dudu-gsh/Lineageos-23-auto-builder-script.git
+git clone https://github.com/EduuTech/Lineageos-23-auto-builder-script.git
 ./menu.sh
 ```
-First one is recommended
 
 # Recommended Requirements  
 Ubuntu 24 or Debian latest [Probaly supported oses](OS_LIST). 
