@@ -4,8 +4,7 @@
 
 Hello, welcome to my repository! This repository contains a LineageOS 23 builder, and i think i will add way to build other versions.
 
-The KernelSU is only supported for none GKI devices
-And its for less then 4.14 of kernel
+The KernelSU is normaly supported for non-GKI,but you can go to [here](#gki-for-ksu)
 
 Its only for LineageOS 23
 If you want to add something,create a issue or make your fork
@@ -18,6 +17,11 @@ How to download the script
 ```bash
 git clone https://github.com/EduuTech/Lineageos-23-auto-builder-script.git
 ./menu.sh
+```
+## GKI for KSU
+If you want KernelSU with GKI,just run 
+```bash
+./menu.sh --KSU-GKI
 ```
 
 # Recommended Requirements  

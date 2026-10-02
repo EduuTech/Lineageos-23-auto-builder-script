@@ -4,8 +4,7 @@
 
 Olá,bem vindo ao meu repositório,esse repositório contem um builder de LineageOS 23,e eu acho que eu vou adicionar outras versões
 
-O KernelSU é para NAO GKI DISPOSITIVOS
-E é para kernels abaixo de 4.14
+O KernelSU no repositório é pro nao-gki,suportado ate 4.14,mais da pra rodar pra GKI [aqui](#gki-pro-kernelSU)
 
 Se voce quiser que eu adicione algo,crie uma issue ou faça um fork
 
@@ -16,6 +15,11 @@ Como baixar o script
 ```bash
 git clone https://github.com/EduuTech/Lineageos-23-auto-builder-script.git
 ./menu.sh
+```
+## GKI pro KernelSU
+Se voce quiser usar KernelSU com GKI,rode
+```bash
+./menu.sh --KSU-GKI
 ```
 # Requerimentos recomandadas
 Ubuntu 24 ou debian  mais recente [Lista de provavelmente suportados](OS_LIST)
