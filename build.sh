@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
 #  MIT License
 #
 #  Copyright (c) 2026 Dudu-gsh
@@ -31,15 +32,8 @@ echo "$ASK"
 echo "$EX_CODE"
 read -rp "$WRITE" CODENOME
 clear
-# Baixa especificacoes
 echo "$WAIT_CODE"
 sleep 3
-}
-
-ask_zip() {
-  echo "$ASKZIP"
-echo "$ZIP_EX"
-read -rp "$WRITE" ZIP 
 }
 
 # Trocar por selecao do usuario,mais se nada,vai ser subtraido por 2 como abaixo
@@ -91,13 +85,8 @@ while ! breakfast "$CODENOME"; do
     echo "$ERROR_CODE"
     ASK
 done
+./tools/zip_download.sh CODENAME="$CODENAME" ERROR_DOWN="$ERROR_DOWN"
 
-ask_zip
-
-while [[ ! -f "$ZIP" ]]; do 
-echo "$ERROR_ZIP"
-ask_zip
-done
 path
 while [[ ! -d "$PASTA" ]]; do
 echo "$ERROR_BLOB"
@@ -123,9 +112,8 @@ clear
 read -rp "$ASK_SIGN" SIGNED
    if [[ $SIGNED =~ ^[YySs].*$ ]]; then
 cd "$HERE"
-chmod +x assina_pls.sh
-cd "$HERE"
-exec ./tools/"$TOOL_SIGN" "$EMAIL"
+export CODENAME
+exec ./sign_"$LANG".sh
 
    elif [[ $SIGNED =~ ^[Nn]$ ]]; then 
 brunch "$CODENOME"

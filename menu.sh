@@ -50,12 +50,12 @@ read -rp "(S/N)" KERNELSU
     if [[ $KERNELSU =~ ^[Ss]$ ]]; then
         echo "Tabom"
         chmod +x * tools/*
-        export USE_KERNELSU=true GKI
+        export USE_KERNELSU=true GKI LANG=pt_BR
         exec tools/pt_BR.sh
         exit 0
     else
         chmod +x * tools/*
-        export USE_KERNELSU=false
+        export USE_KERNELSU=false LANG=pt_BR
         exec tools/pt_BR.sh
         exit 0
     fi
@@ -68,13 +68,13 @@ read -rp "(Y/N)" KERNELSU
     if [[ $KERNELSU =~ ^[Yy]$ ]]; then
         echo "Okay"
         chmod +x * tools/*
-        export USE_KERNELSU=true GKI
+        export USE_KERNELSU=true GKI LANG=US
         exec tools/US.sh
     elif [[ $KERNELSU =~ ^[nn]$ ]]; then
         echo "Okay"
         chmod +x * tools/*
-        export USE_KERNELSU=false
-        exec tools/US.sh
+        export USE_KERNELSU=false LANG=US
+        exec tools/US.sh 
 else 
 echo "Nao entendi meu fi."
 echo "I dont understand"
