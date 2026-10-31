@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+
 #  MIT License
 #
 #  Copyright (c) 2026 Dudu-gsh
