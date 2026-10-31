@@ -22,6 +22,43 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+NON_VERBOSE=false
+[[ "$1" == "--NON-VERBOSE" ]] && NON_VERBOSE=true
+
+spinner() {
+    local pid=$1 frames='⣾⣽⣻⢿⡿⣟⣯⣷' i=0
+    while kill -0 "$pid" 2>/dev/null; do
+        printf "\r%s" "${frames:i++%${#frames}:1}"
+        sleep .1
+    done
+}
+
+run() {
+    local step=$1; shift
+
+    if $NON_VERBOSE; then
+        printf "%s " "$step"
+        "$@" >/dev/null 2>&1 &
+        local pid=$!
+        spinner "$pid"
+        wait "$pid" && echo -e "\r✓ $step" || {
+            echo -e "\r✗ $step"
+            return 1
+        }
+    else
+        echo "==> $step"
+        "$@"
+    fi
+}
+
+if [[ "$BUILD_JUMP" == Y]]; then
+QUES="[S/N]"
+THINK_SIGN="I think you meaned non-signed"
+ASK_SIGN="You want signed build? $QUES"
+export QUES ASK_SIGN THINK_SIGN GKI DIR="$SCRIPT_DIR" spinner run
+cd "$DIR"
+exec bash <(tail -n +101 script.sh)
+fi
 
 WELCOME="Welcome to my auto builder"
 ASK_EMAIL="What's your Email(its for repo)"
@@ -38,10 +75,9 @@ ERROR_FILE="Error:Important file not found!!"
 ERROR_ZIP="File not found"
 ERROR_BLOB="Wrong path"
 WAIT_CODE="Drink coffe or do something,becuse it will take long"
-THINK_CODE="I think you meaned non-signed"
+THINK_SIGN="I think you meaned non-signed"
 ERROR_DOWN="Download failed"
 
-
-export GKI WELCOME ASK_EMAIL ASK_BLOB WRITE QUES ASK_NAME WARN_CODE EX_CODE ASK_SIGN ERROR_CODE ERROR_FILE ERROR_ZIP ERROR_BLOB WAIT_CODE THINK_CODE LANG
+export GKI WELCOME ASK_EMAIL ASK_BLOB WRITE QUES ASK_NAME WARN_CODE EX_CODE ASK_SIGN ERROR_CODE ERROR_FILE ERROR_BLOB WAIT_CODE spinner run THINK_SIGN LANG ERROR_DOWN DIR="$SCRIPT_DIR"
 
 exec ../build.sh

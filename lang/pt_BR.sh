@@ -22,6 +22,43 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+NON_VERBOSE=false
+[[ "$1" == "--NON-VERBOSE" ]] && NON_VERBOSE=true
+
+spinner() {
+    local pid=$1 frames='⣾⣽⣻⢿⡿⣟⣯⣷' i=0
+    while kill -0 "$pid" 2>/dev/null; do
+        printf "\r%s" "${frames:i++%${#frames}:1}"
+        sleep .1
+    done
+}
+
+run() {
+    local step=$1; shift
+
+    if $NON_VERBOSE; then
+        printf "%s " "$step"
+        "$@" >/dev/null 2>&1 &
+        local pid=$!
+        spinner "$pid"
+        wait "$pid" && echo -e "\r✓ $step" || {
+            echo -e "\r✗ $step"
+            return 1
+        }
+    else
+        echo "==> $step"
+        "$@"
+    fi
+}
+
+if [[ "$BUILD_JUMP" == Y]]; then
+THINK_SIGN="Eu acho que voce quis dizer nao assinado"
+ASK_SIGN="Voce vai querer build assinada ou nao $QUES"
+QUES="[S/N]"
+export QUES ASK_SIGN THINK_SIGN GKI spinner run DIR="$SCRIPT_DIR"
+cd "$DIR"
+exec bash <(tail -n +101 script.sh)
+fi
 
 WELCOME="Bem Vindo ao meu auto builder de lineageos"
 ASK_EMAIL="Qual o seu email (E pro repo)"
@@ -37,8 +74,8 @@ ERROR_CODE="Erro:Voce errou o codenome ou o download falhou"
 ERROR_FILE="Arquivo nao encontrado!"
 ERROR_BLOB="Pasta errada"
 WAIT_CODE="Tome um cafe ou faça algo,pois vai demorar..."
-THINK_CODE="Eu acho que vice quis dizer nao assinado"
+THINK_SIGN="Eu acho que vice quis dizer nao assinado"
 ERROR_DOWN="O download falhou ou baixou incorretamente"
 
-export GKI WELCOME ASK_EMAIL ASK_BLOB WRITE QUES ASK_NAME WARN_CODE EX_CODE ASK_SIGN ERROR_CODE ERROR_FILE ERROR_BLOB WAIT_CODE THINK_CODE LANG ERROR_DOWN
+export GKI WELCOME ASK_EMAIL ASK_BLOB WRITE QUES ASK_NAME WARN_CODE EX_CODE ASK_SIGN ERROR_CODE ERROR_FILE ERROR_BLOB WAIT_CODE spinner run THINK_SIGN LANG ERROR_DOWN DIR="$SCRIPT_DIR"
 exec ../build.sh 

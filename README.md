@@ -23,6 +23,19 @@ If you want KernelSU with GKI,just run
 ```bash
 ./menu.sh --KSU-GKI
 ```
+## If you want less text
+If you want less text to apear on your screen,just run
+```bash
+./menu.sh --NON_VERBOSE
+```
+
+
+## Making changes to the kernel
+If you want to make changes to the kernel,just wait when you see just "..." and type CRLT + C
+
+When you finish making changes,just type ```bash
+menu.sh --BUILD
+```
 
 # Recommended Requirements  
 Ubuntu 24 or Debian latest [Probaly supported oses](OS_LIST). 

@@ -36,13 +36,8 @@ echo "$WAIT_CODE"
 sleep 3
 }
 
-# Trocar por selecao do usuario,mais se nada,vai ser subtraido por 2 como abaixo
-
-#CORES=$(( $(nproc) - 2 ))
-#(( CORES < 1 )) && CORES=1
-
 # Baixa pacotes
-sudo apt update
+run "$APT" sudo apt update
 sudo apt install -y bc bison build-essential \
 ccache curl flex g++-multilib gcc-multilib git \
 git-lfs gnupg gperf imagemagick protobuf-compiler \
@@ -75,7 +70,7 @@ ccache -M 30G
 ccache -o compression=true
 # Baixa coisas
 cd ~/android/lineage
-repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs --no-clone-bundle
+run "$REPO" repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs --no-clone-bundle
 repo sync -c -j"$CORES"
 clear
 # Baixa mais coisas
@@ -85,7 +80,7 @@ while ! breakfast "$CODENOME"; do
     echo "$ERROR_CODE"
     ASK
 done
-./tools/zip_download.sh CODENAME="$CODENAME" ERROR_DOWN="$ERROR_DOWN"
+./zip_download.sh CODENAME="$CODENAME" ERROR_DOWN="$ERROR_DOWN"
 
 path
 while [[ ! -d "$PASTA" ]]; do
@@ -104,9 +99,10 @@ elif [[ -f ./extract-files.py ]]; then
 fi
 # Compila
 croot
+read -rp "..."
 clear
    if [[ "$USE_KERNELSU" == true ]]; then
-   cd "$(find kernel -type d -name "$CODENOME").."
+   run "KSU_INSTALL" cd "$(find kernel -type d -name "$CODENOME").."
 # curl -algo https://algum.site
    fi
 read -rp "$ASK_SIGN" SIGNED
@@ -116,6 +112,6 @@ export CODENAME
 exec ./sign_"$LANG".sh
 
    elif [[ $SIGNED =~ ^[Nn]$ ]]; then 
-brunch "$CODENOME"
+run "Compilando" brunch "$CODENOME"
   else
-echo "Acho que voce quis dizer nao assinado"
+echo "$THINK_SIGN"

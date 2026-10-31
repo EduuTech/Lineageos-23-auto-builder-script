@@ -16,11 +16,23 @@ Como baixar o script
 git clone https://github.com/EduuTech/Lineageos-23-auto-builder-script.git
 ./menu.sh
 ```
+## Se quiser menos texto na tela
+Se voce quiser so rode 
+```bash
+./menu.sh --NON-VERBOSE
+```
+
 ## GKI pro KernelSU
 Se voce quiser usar KernelSU com GKI,rode
 ```bash
 ./menu.sh --KSU-GKI
+## Se quiser fazer alteraçoes ao kernel
+Quando aparecer só "..." aperte CTRL + C
+Quando vc terminar,rode
+```bash
+./menu.sh --BUILD
 ```
+Depois que voce terminar de modificar é so rodar
 # Requerimentos recomandadas
 Ubuntu 24 ou debian  mais recente [Lista de provavelmente suportados](OS_LIST)
 

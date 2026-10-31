@@ -21,11 +21,19 @@
 #  SOFTWARE.
 
 clear
+CORES="$1"
+if [[ "$1" == --BUILD ]]; then 
+BUILD_JUMP="Y"
+else
+BUILD_JUMP="N"
+fi
+
 if [[ "$1" == --KSU-GKI ]]; then
 GKI="Y"
 else
 GKI="N"
 fi
+
 echo "Ola e bem vindo ao meu menu"
 sleep 1
 echo "Hello and welcome to my menu"
