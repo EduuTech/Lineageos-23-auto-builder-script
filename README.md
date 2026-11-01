@@ -1,71 +1,72 @@
-<h1 align="center">LineageOS 23 auto builder script</h1>
+# LineageOS 23 Auto Builder README
 
-[Português-BR](README_PT.md) | [English](README.md)
+<div align="center">
 
-Hello, welcome to my repository! This repository contains a LineageOS 23 builder, and i think i will add way to build other versions.
+# LineageOS 23 Auto Builder Script
 
-The KernelSU is normaly supported for non-GKI,but you can go to [here](#gki-for-ksu)
+<p align="center">
+  <a href="https://github.com/EduuTech/Lineageos-23-auto-builder-script/stargazers"><img src="https://img.shields.io/github/stars/EduuTech/Lineageos-23-auto-builder-script?style=flat-square&logo=github" alt="GitHub Stars"></a>
+  <a href="https://github.com/EduuTech/Lineageos-23-auto-builder-script/network/members"><img src="https://img.shields.io/github/forks/EduuTech/Lineageos-23-auto-builder-script?style=flat-square&logo=github" alt="GitHub Forks"></a>
+  <a href="https://github.com/EduuTech/Lineageos-23-auto-builder-script/blob/main/LICENSE"><img src="https://img.shields.io/github/license/EduuTech/Lineageos-23-auto-builder-script?style=flat-square" alt="License"></a>
+</p>
 
-Its only for LineageOS 23
-If you want to add something,create a issue or make your fork
+[Português-BR](README_PT.md)
 
-What does this do?
-This script installs the required tools and dependencies to build LineageOS 23.
+</div>
 
-How to download the script
+---
 
+Welcome to the repository! This script automates building LineageOS 23, and I plan to add support for other versions down the line.
+
+> **Note:** KernelSU is only supported on non-GKI devices with kernel versions below 4.14. This tool is designed exclusively for LineageOS 23.
+
+If you want to contribute, feel free to open an issue or submit a pull request!
+
+---
+
+## What does this do?
+It installs the required tools and dependencies, initializes the repo, handles syncing, extracts proprietary blobs, integrates optional KernelSU, and builds your ROM.
+
+## How to Get Started
+
+### Option 1: Using Git (Recommended)
 ```bash
 git clone https://github.com/EduuTech/Lineageos-23-auto-builder-script.git
+cd Lineageos-23-auto-builder-script
 ./menu.sh
 ```
-## GKI for KSU
-If you want KernelSU with GKI,just run 
+
+### Option 2: Via ZIP Download
 ```bash
-./menu.sh --KSU-GKI
-```
-## If you want less text
-If you want less text to apear on your screen,just run
-```bash
-./menu.sh --NON_VERBOSE
+curl -L https://github.com/EduuTech/Lineageos-23-auto-builder-script/archive/refs/heads/main.zip -o lineage-builder.zip
+unzip lineage-builder.zip
+cd Lineageos-23-auto-builder-script-main
+./menu.sh
 ```
 
+---
 
-## Making changes to the kernel
-If you want to make changes to the kernel,just wait when you see just "..." and type CRLT + C
+## Recommended System Requirements
+* **OS:** Ubuntu 26.06 or latest Debian (x64). See the [Supported OS List](OS_LIST).
+* **RAM:** 16GB minimum
+* **CPU:** 8 cores
+* **Storage:** 1TB SSD (HDDs work, but expect significantly slower compilation times)
 
-When you finish making changes,just type ```bash
-menu.sh --BUILD
-```
+> [!WARNING]
+> Please do not run auxiliary scripts directly with bash, as it will cause errors. Always use the main menu script (`./menu.sh`).
 
-# Recommended Requirements  
-Ubuntu 24 or Debian latest [Probaly supported oses](OS_LIST). 
+---
 
-Note:not all OSes are supported,Please see if your OS of choice is x64 and based of the Ubuntu 24,If you are using debian just download the latest
+## Author's Note
+I created this out of sheer boredom. I haven't fully tested every edge case because I don't have proper PC hardware - I actually wrote and managed this entire project directly from an Android device! ;D
 
-16GB of RAM   
+---
 
-8 cores. 
+## ✅ To-Do
+- [x] Add support for KernelSU
+- [ ] Add support for KernelSU GKI
+- [x] Add a way to build signed builds (Still being refined)
 
-1TB SSD (If you want,use HDD,but its slower to compile)
+---
 
-# Warnig
-Please,understand that you cant compile through Windows or mac
-And Please,dont execute it on a diferent path that you are
-
-Please do not run the other scripts with bash,it will give erros
-
-Theres English and portuguese
-
-I created this on boredom, i dont tested the scripts becuse i dont have propper hardware (I used android to create)
-
-;D
-
-To do:
-- [x] Add suport to KernelSU
-- [ ] Add suport to KernelSU GKI
-- [x] Add a way to build signed builds (Still beign fixed)
-- [x] Add a new way for translations (Still being worked on)
-
-[Lincense](LINCENSE)
-
-Still being fixed the way to sign and implementiting a simpler way to translations
+[License](LICENSE)
