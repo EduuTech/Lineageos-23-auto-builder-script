@@ -26,7 +26,7 @@
 QUES="N/W"
 ASK_COUNTRY="Whats your country that you live (You can put anything here)"
 WARN_COUNTRY="Write the initialism,not the the name"
-ASK_STATE="Estado (Pode ser qualquer um)"
+ASK_STATE="State (Can be any state)"
 WARN_STATE="This and the next one dont put initialism"
 WRITE="Write here:"
 ASK_CITY="City (Can put anything)"
