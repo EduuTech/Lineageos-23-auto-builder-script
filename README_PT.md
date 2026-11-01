@@ -26,6 +26,7 @@ Se voce quiser so rode
 Se voce quiser usar KernelSU com GKI,rode
 ```bash
 ./menu.sh --KSU-GKI
+```
 ## Se quiser fazer alteraçoes ao kernel
 Quando aparecer só "..." aperte CTRL + C
 Quando vc terminar,rode

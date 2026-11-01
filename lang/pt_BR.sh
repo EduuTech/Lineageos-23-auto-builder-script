@@ -51,16 +51,18 @@ run() {
     fi
 }
 
-if [[ "$BUILD_JUMP" == Y]]; then
+if [[ "$BUILD_JUMP" == Y ]]; then
 THINK_SIGN="Eu acho que voce quis dizer nao assinado"
 ASK_SIGN="Voce vai querer build assinada ou nao $QUES"
 QUES="[S/N]"
 export QUES ASK_SIGN THINK_SIGN GKI spinner run DIR="$SCRIPT_DIR"
-cd "$DIR"
-exec bash <(tail -n +101 script.sh)
+exec bash <(tail -n +101 "$SCRIPT_DIR"/build.sh)
 fi
 
 WELCOME="Bem Vindo ao meu auto builder de lineageos"
+APT="Instalando pacotes"
+REPO="Instalando o repositorio"
+KSU_INSTALL="Instalando KernelSU"
 ASK_EMAIL="Qual o seu email (E pro repo)"
 ASK_BLOB="Qual é a pasta que debaixo da parte \"Extract Proparytery blobls\""
 WRITE="Escreva Aqui:"
@@ -76,6 +78,7 @@ ERROR_BLOB="Pasta errada"
 WAIT_CODE="Tome um cafe ou faça algo,pois vai demorar..."
 THINK_SIGN="Eu acho que vice quis dizer nao assinado"
 ERROR_DOWN="O download falhou ou baixou incorretamente"
+PACK_NOT_F="Pacote nao achado: "
 
-export GKI WELCOME ASK_EMAIL ASK_BLOB WRITE QUES ASK_NAME WARN_CODE EX_CODE ASK_SIGN ERROR_CODE ERROR_FILE ERROR_BLOB WAIT_CODE spinner run THINK_SIGN LANG ERROR_DOWN DIR="$SCRIPT_DIR"
-exec ../build.sh 
+export GKI WELCOME ASK_EMAIL ASK_BLOB WRITE QUES ASK_NAME WARN_CODE EX_CODE ASK_SIGN ERROR_CODE ERROR_FILE ERROR_BLOB WAIT_CODE spinner run THINK_SIGN LANG ERROR_DOWN DIR="$SCRIPT_DIR" APT REPO KSU_INSTALL PACK_NOT_F
+exec "$SCRIPT_DIR"/build.sh 

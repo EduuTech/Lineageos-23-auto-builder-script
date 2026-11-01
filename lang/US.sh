@@ -51,16 +51,18 @@ run() {
     fi
 }
 
-if [[ "$BUILD_JUMP" == Y]]; then
+if [[ "$BUILD_JUMP" == Y ]]; then
 QUES="[S/N]"
 THINK_SIGN="I think you meaned non-signed"
 ASK_SIGN="You want signed build? $QUES"
 export QUES ASK_SIGN THINK_SIGN GKI DIR="$SCRIPT_DIR" spinner run
-cd "$DIR"
-exec bash <(tail -n +101 script.sh)
+exec bash <(tail -n +101 "$SCRIPT_DIR"/build.sh )
 fi
 
 WELCOME="Welcome to my auto builder"
+APT="Installing packages"
+REPO="Installing source"
+KSU_INSTALL="Installing KernelSU"
 ASK_EMAIL="What's your Email(its for repo)"
 ASK_BLOB="What's marked on \"Extract Proparytery blobls\""
 WRITE="Write Here:"
@@ -77,7 +79,8 @@ ERROR_BLOB="Wrong path"
 WAIT_CODE="Drink coffe or do something,becuse it will take long"
 THINK_SIGN="I think you meaned non-signed"
 ERROR_DOWN="Download failed"
+PACK_NOT_F="Package not found: "
 
-export GKI WELCOME ASK_EMAIL ASK_BLOB WRITE QUES ASK_NAME WARN_CODE EX_CODE ASK_SIGN ERROR_CODE ERROR_FILE ERROR_BLOB WAIT_CODE spinner run THINK_SIGN LANG ERROR_DOWN DIR="$SCRIPT_DIR"
+export GKI WELCOME ASK_EMAIL ASK_BLOB WRITE QUES ASK_NAME WARN_CODE EX_CODE ASK_SIGN ERROR_CODE ERROR_FILE ERROR_BLOB WAIT_CODE spinner run THINK_SIGN LANG ERROR_DOWN DIR="$SCRIPT_DIR" APT REPO KSU_INSTALL PACK_NOT_F
 
-exec ../build.sh
+exec "$SCRIPT_DIR"/build.sh 

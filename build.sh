@@ -46,7 +46,7 @@ lib32z1-dev libdw-dev libelf-dev libgnutls-dev \
 lz4 libsdl1.2-dev libssl-dev libxml2 \
 libxml2-utils lzop pngcrush rsync schedtool \
 squashfs-tools xsltproc xxd zip zlib1g-dev \
-python-is-python3
+python-is-python3 jq coreutils
 # Cria pastas e baixa repo
 mkdir -p ~/bin
 PATH="$HOME/bin:$PATH"
@@ -80,7 +80,8 @@ while ! breakfast "$CODENOME"; do
     echo "$ERROR_CODE"
     ASK
 done
-./zip_download.sh CODENAME="$CODENAME" ERROR_DOWN="$ERROR_DOWN"
+export CODENAME ERROR_DOWN
+./zip_download.sh
 
 path
 while [[ ! -d "$PASTA" ]]; do
@@ -90,9 +91,9 @@ done
 # Extrai blobs do .zip
 cd "$PASTA"
 if [[ -f "./extract-files.sh" ]]; then
-    ./extract-files.sh "$ZIP"
+    ./extract-files.sh "$ZIP_NAME"
 elif [[ -f ./extract-files.py ]]; then
-   ./extract-files.py "$ZIP"
+   ./extract-files.py "$ZIP_NAME"
   else
   echo "Arquivo importante nao encontrado!!!"
   exit 1
@@ -101,17 +102,17 @@ fi
 croot
 read -rp "..."
 clear
-   if [[ "$USE_KERNELSU" == true ]]; then
-   run "KSU_INSTALL" cd "$(find kernel -type d -name "$CODENOME").."
+#    if [[ "$USE_KERNELSU" == true ]]; then
+#    run "KSU_INSTALL" cd "$(find kernel -type d -name "$CODENOME").."
 # curl -algo https://algum.site
-   fi
+#    fi
 read -rp "$ASK_SIGN" SIGNED
    if [[ $SIGNED =~ ^[YySs].*$ ]]; then
-cd "$HERE"
+cd "$DIR"
 export CODENAME
 exec ./sign_"$LANG".sh
 
    elif [[ $SIGNED =~ ^[Nn]$ ]]; then 
-run "Compilando" brunch "$CODENOME"
+run "$BUILD" brunch "$CODENOME"
   else
 echo "$THINK_SIGN"
